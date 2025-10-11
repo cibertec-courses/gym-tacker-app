@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class SesionEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val fecha: String,
+    val fecha: Long,
     val duracionMinutos: Int = 0,
     val notas: String = ""
 )

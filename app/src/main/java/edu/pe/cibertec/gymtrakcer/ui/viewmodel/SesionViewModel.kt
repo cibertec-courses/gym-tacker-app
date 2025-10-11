@@ -49,9 +49,12 @@ class SesionViewModel(
     fun cargarSeiresDeSesion(sesionId: Int){
         viewModelScope.launch {
             try {
+                repository.getSeriesBySesion(sesionId).collect {
+                    lista -> _seriesActuales.value = lista
+                }
 
             }catch (e: Exception){
-                _error.value = "${e.message}"
+                _error.value = "Error al cargar series: ${e.message}"
             }
         }
     }
@@ -64,9 +67,14 @@ class SesionViewModel(
     ){
         viewModelScope.launch {
             try {
-
+                val sesion = SesionEntity(
+                    fecha = fecha,
+                    duracionMinutos = duracionMinutos,
+                    notas = notas
+                )
+                repository.guardarSesionCompleta(sesion, series)
             }catch (e: Exception){
-                _error.value = "${e.message}"
+                _error.value = "Error al guardar sesion: ${e.message}"
             }
         }
     }
@@ -80,9 +88,17 @@ class SesionViewModel(
     ){
         viewModelScope.launch {
             try {
+                val serie = SerieEntity(
+                    sesionId = sesionId,
+                    ejercicioId = ejericioId,
+                    pesoKg =  pesoKg,
+                    repeticiones= repeticiones,
+                    orden = orden
+                )
+                repository.insertSerie(serie)
 
             }catch (e: Exception){
-                _error.value = "${e.message}"
+                _error.value = "Error al guardar serie: ${e.message}"
             }
         }
     }
@@ -90,9 +106,9 @@ class SesionViewModel(
     fun eliminarSesion(sesionId: Int){
         viewModelScope.launch {
             try {
-
+                repository.elimianrSerieCompleta(sesionId)
             }catch (e: Exception){
-                _error.value = "${e.message}"
+                _error.value = "Error al eliminar: ${e.message}"
             }
         }
     }
@@ -100,9 +116,11 @@ class SesionViewModel(
     fun otenerRecordPersona(ejercicioId: Int, onResult: (SerieEntity?) -> Unit){
         viewModelScope.launch {
             try {
-
+                val record = repository.getRecordPersonal(ejercicioId)
+                onResult(record)
             }catch (e: Exception){
-                _error.value = "${e.message}"
+                _error.value = "Error al obtener record: ${e.message}"
+                onResult(null)
             }
         }
     }

@@ -1,9 +1,5 @@
 package edu.pe.cibertec.gymtrakcer.data.repository
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
 import edu.pe.cibertec.gymtrakcer.data.local.dao.SerieDao
 import edu.pe.cibertec.gymtrakcer.data.local.dao.SesionDao
 import edu.pe.cibertec.gymtrakcer.data.local.entity.SerieEntity
@@ -40,7 +36,7 @@ class SesionRepository(
     }
 
     // SERIES
-    suspend fun insert(serie: SerieEntity): Long{
+    suspend fun insertSerie(serie: SerieEntity): Long{
         return  serieDao.insert(serie)
     }
 

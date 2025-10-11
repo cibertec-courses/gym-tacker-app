@@ -30,5 +30,7 @@ data class SerieEntity(
     val sesionId: Int,
     val ejercicioId: Int,
     val pesoKg: Double,
-    val orden: Int = 0
+    val repeteciones: Int = 0,
+    val orden: Int = 0,
+    val repeticiones: Int
 )
