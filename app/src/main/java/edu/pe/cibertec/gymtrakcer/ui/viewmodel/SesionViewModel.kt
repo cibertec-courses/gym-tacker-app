@@ -46,5 +46,69 @@ class SesionViewModel(
         }
     }
 
+    fun cargarSeiresDeSesion(sesionId: Int){
+        viewModelScope.launch {
+            try {
+
+            }catch (e: Exception){
+                _error.value = "${e.message}"
+            }
+        }
+    }
+
+    fun guardarSesionCompleta(
+        fecha: Long,
+        duracionMinutos: Int,
+        notas: String,
+        series: List<SerieEntity>
+    ){
+        viewModelScope.launch {
+            try {
+
+            }catch (e: Exception){
+                _error.value = "${e.message}"
+            }
+        }
+    }
+
+    fun insertarSeire(
+        sesionId: Int,
+        ejericioId: Int,
+        pesoKg: Double,
+        repeticiones: Int,
+        orden: Int
+    ){
+        viewModelScope.launch {
+            try {
+
+            }catch (e: Exception){
+                _error.value = "${e.message}"
+            }
+        }
+    }
+
+    fun eliminarSesion(sesionId: Int){
+        viewModelScope.launch {
+            try {
+
+            }catch (e: Exception){
+                _error.value = "${e.message}"
+            }
+        }
+    }
+
+    fun otenerRecordPersona(ejercicioId: Int, onResult: (SerieEntity?) -> Unit){
+        viewModelScope.launch {
+            try {
+
+            }catch (e: Exception){
+                _error.value = "${e.message}"
+            }
+        }
+    }
+
+    fun limpiarError(){
+        _error.value  = null
+    }
 
 }
