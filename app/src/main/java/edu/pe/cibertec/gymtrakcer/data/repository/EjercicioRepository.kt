@@ -26,7 +26,7 @@ class EjercicioRepository(private val ejercicioDao: EjercicioDao){
         ejercicioDao.update(ejercicio)
     }
 
-    suspend fun deteleEjericicio(ejercicio: EjercicioEntity){
+    suspend fun deleteEjercicio(ejercicio: EjercicioEntity){
         ejercicioDao.delete(ejercicio)
     }
 
