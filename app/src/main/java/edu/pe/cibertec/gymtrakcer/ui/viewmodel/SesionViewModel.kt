@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 class SesionViewModel(
     private val repository: SesionRepository
 ): ViewModel(){
-    private val _sesisones = MutableStateFlow<List<SesionEntity>>(emptyList())
-    val sesion: StateFlow<List<SesionEntity>> = _sesisones.asStateFlow()
+    private val _sesiones = MutableStateFlow<List<SesionEntity>>(emptyList())
+    val sesion: StateFlow<List<SesionEntity>> = _sesiones.asStateFlow()
 
     private val _seriesActuales = MutableStateFlow<List<SerieEntity>>(emptyList())
     val seriesActuales: StateFlow<List<SerieEntity>> = _seriesActuales.asStateFlow()
@@ -35,7 +35,7 @@ class SesionViewModel(
             _isLoading.value = true
             try {
                 repository.getAllSesiones().collect {
-                    lista -> _sesisones.value = lista
+                    lista -> _sesiones.value = lista
                 }
             }catch (e: Exception){
                 _error.value = "Error al cargar sesiones: ${e.message}"
