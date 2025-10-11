@@ -21,7 +21,7 @@ interface SesionDao{
     @Query("SELECT * FROM sesiones WHERE id= :id")
     suspend fun getSesionsById(id: Int): SesionEntity?
     @Query("SELECT * FROM sesiones WHERE fecha >= :fechaInicio AND fecha<= :fechaFin ORDER BY fecha DESC")
-    fun getSesionesByRangeFecha(fechaInicio: Long, fechaFin: Long)
+    fun getSesionesByRangeFecha(fechaInicio: Long, fechaFin: Long): Flow<List<SesionEntity>>
     @Query("DELETE FROM sesiones WHERE id = :id")
     suspend fun deleteSesionById(id: Int)
 }
