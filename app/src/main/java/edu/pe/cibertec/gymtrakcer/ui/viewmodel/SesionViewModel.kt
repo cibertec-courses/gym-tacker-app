@@ -2,6 +2,7 @@ package edu.pe.cibertec.gymtrakcer.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import edu.pe.cibertec.gymtrakcer.data.local.entity.SerieEntity
 import edu.pe.cibertec.gymtrakcer.data.local.entity.SesionEntity
 import edu.pe.cibertec.gymtrakcer.data.repository.SesionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,8 +16,8 @@ class SesionViewModel(
     private val _sesison = MutableStateFlow<List<SesionEntity>>(emptyList())
     val sesion: StateFlow<List<SesionEntity>> = _sesison.asStateFlow()
 
-    private val _seriesActuales = MutableStateFlow<List<SesionEntity>>(emptyList())
-    val seriesActuales: StateFlow<List<SesionEntity>> = _seriesActuales.asStateFlow()
+    private val _seriesActuales = MutableStateFlow<List<SerieEntity>>(emptyList())
+    val seriesActuales: StateFlow<List<SerieEntity>> = _seriesActuales.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
@@ -44,4 +45,6 @@ class SesionViewModel(
             }
         }
     }
+
+
 }
