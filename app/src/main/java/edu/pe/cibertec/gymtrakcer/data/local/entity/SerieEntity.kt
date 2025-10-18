@@ -3,6 +3,7 @@ package edu.pe.cibertec.gymtrakcer.data.local.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
+import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "series",
@@ -26,6 +27,7 @@ import androidx.room.Index
     ]
 )
 data class SerieEntity(
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val sesionId: Int,
     val ejercicioId: Int,

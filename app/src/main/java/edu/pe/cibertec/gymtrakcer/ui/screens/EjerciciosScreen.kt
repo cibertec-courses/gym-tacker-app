@@ -215,7 +215,9 @@ fun AgregarEjercicioDialog(
             }
 
         },
-        confirmButton = {},
+        confirmButton = {
+
+        },
         dismissButton = {}
     )
 
