@@ -22,6 +22,7 @@ import edu.pe.cibertec.gymtrakcer.ui.viewmodel.EjericioViewModel
 @Composable
 
 fun EjerciciosScreen(
+    modifier: Modifier = Modifier,
     viewModel: EjericioViewModel
 ){
     val ejercicios by viewModel.ejericios.collectAsState()
