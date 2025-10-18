@@ -210,15 +210,64 @@ fun AgregarEjercicioDialog(
                             )
                         }
                     }
+
+
+                }
+                var expandedTipo by remember { mutableStateOf(false) }
+                ExposedDropdownMenuBox(
+                    expanded = expandedTipo,
+                    onExpandedChange = {expandedTipo = it}
+                ) {
+                    OutlinedTextField(
+                        value =  tipoSeleccionado,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Tipo")},
+                        trailingIcon = {
+                            ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedTipo)
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor()
+
+                    )
+                    ExposedDropdownMenu(
+                        expanded =  expandedTipo,
+                        onDismissRequest = {expandedTipo = false}
+                    ) {
+                        tipos.forEach { tipo ->
+                            DropdownMenuItem(
+                                text = {Text(tipo)},
+                                onClick = {
+                                    tipoSeleccionado = tipo
+                                    expandedTipo= false
+                                }
+                            )
+                        }
+                    }
                 }
 
             }
 
         },
         confirmButton = {
-
+            TextButton(
+                onClick = {
+                    if(nombre.isNotBlank()) {
+                        onConfirm(nombre,grupoSeleccionado, tipoSeleccionado)
+                    }
+                }
+            ) {
+                Text("Guardar")
+            }
         },
-        dismissButton = {}
+        dismissButton = {
+            TextButton(
+                onClick = onDimiss
+            ) {
+                Text("Cancelar")
+            }
+        }
     )
 
 

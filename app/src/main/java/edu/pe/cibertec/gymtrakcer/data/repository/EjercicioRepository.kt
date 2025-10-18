@@ -15,7 +15,7 @@ class EjercicioRepository(private val ejercicioDao: EjercicioDao){
     }
 
     suspend fun getEjericicioById(id:Int): EjercicioEntity? {
-        return getEjericicioById(id)
+        return ejercicioDao.getEjercicioById(id)
     }
 
     suspend fun insertEjercicio(ejercicio: EjercicioEntity): Long {

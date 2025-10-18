@@ -31,13 +31,14 @@ class EjericioViewModel(
     private fun caragrEjercicios(){
         viewModelScope.launch {
             _isLoading.value = true
+            _error.value = null
             try {
                 repository.getAllEjercicios().collect { lista ->
                     _ejercicios.value = lista
+                    _isLoading.value = false
                 }
             } catch (e: Exception){
                 _error.value = "Error al cargar ejercicos: ${e.message}"
-            }finally {
                 _isLoading.value = false
             }
         }
